@@ -38,5 +38,5 @@ The application is built using the following technologies:
 
 ## Demo
 
-You can try out the Math Table Generator by visiting the live demo [here](https://your-live-demo-link-here).
+You can try out the Math Table Generator by visiting the live demo [here](https://warm-wisp-ef08eb.netlify.app/).
 
