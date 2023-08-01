@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Table Generator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+  
+    .input-group__input {
+      font-size: 18px; 
+      font: inherit;
+      color: black;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: 2px solid black;
+      background-color: transparent;
+      transition: outline-color 500ms;
+      width: 100%;
+    }
+  
+    .input-group__input:is(:focus, :valid) {
+      outline-color: black;
+    }
+  
+    .input-group__label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 8px;
+      color: black;
+      transition: transform 500ms, background-color 500ms;
+      transform-origin: top left;
+      background-color: transparent;
+    }
+  
+    .input-group__label.active {
+      transform: translate(10px, -17px) scale(0.8);
+      background-color: white;
+    }
+  
+    @media (max-width: 576px) {
+      .input-group__input {
+        font-size: 24px; 
+      }
+    }
+  </style>
+
+<body>
+    <header class="header">
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="top_bar_contact_item">&nbsp;<div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>+92 331 2269636</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918597/mail.png" alt=""></div><a href="mailto:ahmedmujtaba03007098129@gmail.com">ahmedmujtaba03007098129@gmail.com</a></div>
+						<div class="top_bar_contact_item">&nbsp; Made By<a href="https://www.github.com/ahmedmujtaba1" target="_blank">Ahmed Mujtaba</a></div>
+						<div class="top_bar_content ml-auto">
+							<div class="top_bar_menu">
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+    </header>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h2 class="text-center">Math Table Generator</h2>
+            <form id="mathForm">
+              <div class="input-group">
+                <input type="number" id="numberInput" class="input-group__input" required>
+                <label for="numberInput" class="input-group__label">Enter number</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Generate Table</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-5" id="resultTable">
+          <div class="col-md-6 offset-md-3">
+          </div>
+        </div>
+      </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script>
+    const numberInput = document.getElementById('numberInput');
+    const label = document.querySelector('.input-group__label');
+
+    numberInput.addEventListener('focus', function () {
+      label.classList.add('active');
+    });
+
+    numberInput.addEventListener('blur', function () {
+      if (!numberInput.value.trim()) {
+        label.classList.remove('active');
+      }
+    });
+
+    document.getElementById('mathForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      generateMathTable();
+    });
+
+    function generateMathTable() {
+      const numberInputValue = parseInt(document.getElementById('numberInput').value);
+      const resultTable = document.getElementById('resultTable');
+
+      resultTable.innerHTML = '';
+
+      const table = document.createElement('table');
+      table.classList.add('table', 'table-bordered');
+
+      const headerRow = document.createElement('tr');
+      for (let num = numberInputValue; num <= 20; num++) {
+        const th = document.createElement('th');
+        th.textContent = `${num} Times Table`;
+        headerRow.appendChild(th);
+      }
+
+      table.appendChild(headerRow);
+
+      for (let no = 1; no <= 12; no++) { 
+        const resultRow = document.createElement('tr');
+
+        for (let num = numberInputValue; num <= 20; num++) {
+          const resultCell = document.createElement('td');
+          const result = `${num} × ${no} = ${num * no}`;
+          resultCell.textContent = result;
+          resultRow.appendChild(resultCell);
+        }
+
+        table.appendChild(resultRow);
+      }
+
+      resultTable.appendChild(table);
+    }
+  </script>
+</body>
+</html>
