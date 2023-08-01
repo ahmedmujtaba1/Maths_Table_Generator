@@ -1,6 +1,6 @@
 # Math Table Generator
 
-![Math Table Generator](video_play.mkv)
+![Math Table Generator](image_2023-08-01_094821158.png)
 
 ## Table of Contents
 
